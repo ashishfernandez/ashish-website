@@ -365,18 +365,9 @@ a {
 
 .tile-desc {
     font-size: 0.95rem;
-    color: var(--text-secondary);
-    line-height: 1.8;
+    color: rgba(200, 200, 215, 0.85);
+    line-height: 1.6;
     flex: 1;
-    display: inline;
-}
-
-.tile-desc > span,
-.tile-desc {
-    background: rgba(255, 255, 255, 0.08);
-    padding: 0.15rem 0.35rem;
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
 }
 
 .tile-action {
@@ -386,7 +377,7 @@ a {
     margin-top: 1.5rem;
     font-size: 0.88rem;
     font-weight: 600;
-    color: var(--text-muted);
+    color: rgba(180, 180, 200, 0.7);
     transition: var(--transition-base);
 }
 
