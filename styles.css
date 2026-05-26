@@ -294,14 +294,26 @@ a {
     position: relative;
     z-index: 2;
     padding: clamp(1.75rem, 3vw, 2.5rem);
-    background: var(--bg-card);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border-radius: var(--radius-lg);
     height: 100%;
     display: flex;
     flex-direction: column;
     min-height: 280px;
+}
+
+#tile-resume .tile-content {
+    background-image: url('assets/tile-bg-purple.png');
+}
+
+#tile-builds .tile-content {
+    background-image: url('assets/tile-bg-teal.png');
+}
+
+#tile-thoughts .tile-content {
+    background-image: url('assets/tile-bg-pink.png');
 }
 
 .tile-icon-wrap {
