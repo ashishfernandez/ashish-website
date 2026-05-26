@@ -41,11 +41,11 @@
         constructor() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.radius = Math.random() * 180 + 100;
-            this.color = palette[Math.floor(Math.random() * 3)]; // stick to main 3
-            this.opacity = Math.random() * 0.06 + 0.02;
-            this.driftX = (Math.random() - 0.5) * 0.15;
-            this.driftY = (Math.random() - 0.5) * 0.15;
+            this.radius = Math.random() * 280 + 150;
+            this.color = palette[Math.floor(Math.random() * 3)];
+            this.opacity = Math.random() * 0.14 + 0.06;
+            this.driftX = (Math.random() - 0.5) * 0.3;
+            this.driftY = (Math.random() - 0.5) * 0.3;
             this.phaseX = Math.random() * Math.PI * 2;
             this.phaseY = Math.random() * Math.PI * 2;
             this.freqX = Math.random() * 0.0004 + 0.0002;
@@ -53,8 +53,8 @@
         }
 
         update(t) {
-            this.x += this.driftX + Math.sin(t * this.freqX + this.phaseX) * 0.3;
-            this.y += this.driftY + Math.cos(t * this.freqY + this.phaseY) * 0.3;
+            this.x += this.driftX + Math.sin(t * this.freqX + this.phaseX) * 0.6;
+            this.y += this.driftY + Math.cos(t * this.freqY + this.phaseY) * 0.6;
 
             // Wrap around
             if (this.x < -this.radius) this.x = canvas.width + this.radius;
@@ -83,16 +83,16 @@
         reset() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 2 + 0.3;
-            this.baseSpeedX = (Math.random() - 0.5) * 0.4;
-            this.baseSpeedY = (Math.random() - 0.5) * 0.4;
-            this.opacity = Math.random() * 0.5 + 0.08;
+            this.size = Math.random() * 3 + 0.5;
+            this.baseSpeedX = (Math.random() - 0.5) * 0.6;
+            this.baseSpeedY = (Math.random() - 0.5) * 0.6;
+            this.opacity = Math.random() * 0.7 + 0.15;
             this.pulseSpeed = Math.random() * 0.002 + 0.001;
             this.pulsePhase = Math.random() * Math.PI * 2;
             this.color = palette[Math.floor(Math.random() * palette.length)];
             this.driftPhase = Math.random() * Math.PI * 2;
             this.driftFreq = Math.random() * 0.001 + 0.0005;
-            this.driftAmp = Math.random() * 0.5 + 0.2;
+            this.driftAmp = Math.random() * 0.8 + 0.4;
         }
 
         update(t) {
@@ -133,7 +133,7 @@
 
     /* ---------- Connecting Lines ---------- */
     function connectParticles() {
-        const maxDist = 120;
+        const maxDist = 160;
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x;
@@ -141,7 +141,7 @@
                 const dist = Math.sqrt(dx * dx + dy * dy);
 
                 if (dist < maxDist) {
-                    const opacity = (1 - dist / maxDist) * 0.06;
+                    const opacity = (1 - dist / maxDist) * 0.15;
                     // Blend colors of the two particles
                     const c1 = particles[i].color;
                     const c2 = particles[j].color;
@@ -150,7 +150,7 @@
                     const b = Math.round((c1[2] + c2[2]) / 2);
                     ctx.beginPath();
                     ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${opacity})`;
-                    ctx.lineWidth = 0.5;
+                    ctx.lineWidth = 0.8;
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
                     ctx.stroke();
@@ -162,12 +162,12 @@
     /* ---------- Mouse Glow ---------- */
     function drawMouseGlow() {
         if (!mouse.active || mouse.x === null) return;
-        const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 250);
-        gradient.addColorStop(0, 'rgba(124, 106, 255, 0.04)');
-        gradient.addColorStop(0.5, 'rgba(0, 212, 170, 0.02)');
+        const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 350);
+        gradient.addColorStop(0, 'rgba(124, 106, 255, 0.12)');
+        gradient.addColorStop(0.4, 'rgba(0, 212, 170, 0.06)');
         gradient.addColorStop(1, 'rgba(255, 92, 147, 0)');
         ctx.beginPath();
-        ctx.arc(mouse.x, mouse.y, 250, 0, Math.PI * 2);
+        ctx.arc(mouse.x, mouse.y, 350, 0, Math.PI * 2);
         ctx.fillStyle = gradient;
         ctx.fill();
     }
@@ -176,11 +176,11 @@
     function init() {
         particles = [];
         orbs = [];
-        const particleCount = Math.min(100, Math.floor((canvas.width * canvas.height) / 12000));
+        const particleCount = Math.min(160, Math.floor((canvas.width * canvas.height) / 8000));
         for (let i = 0; i < particleCount; i++) {
             particles.push(new Particle());
         }
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 8; i++) {
             orbs.push(new Orb());
         }
     }
