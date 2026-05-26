@@ -368,9 +368,13 @@ a {
     color: var(--text-secondary);
     line-height: 1.8;
     flex: 1;
-    background: rgba(0, 0, 0, 0.35);
-    padding: 0.4rem 0.6rem;
-    border-radius: 6px;
+    display: inline;
+}
+
+.tile-desc > span,
+.tile-desc {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.15rem 0.35rem;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
 }
