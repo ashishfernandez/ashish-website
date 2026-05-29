@@ -364,7 +364,7 @@ html.dark .glow-blob {
     width: 60vw;
     height: 60vw;
     background-color: var(--glow-1);
-    animation: drift-1 25s infinite alternate ease-in-out;
+    animation: drift-1 16s infinite alternate ease-in-out;
 }
 
 .glow-2 {
@@ -373,7 +373,7 @@ html.dark .glow-blob {
     width: 50vw;
     height: 50vw;
     background-color: var(--glow-2);
-    animation: drift-2 30s infinite alternate ease-in-out;
+    animation: drift-2 20s infinite alternate ease-in-out;
 }
 
 .glow-3 {
@@ -382,7 +382,7 @@ html.dark .glow-blob {
     width: 45vw;
     height: 45vw;
     background-color: var(--glow-3);
-    animation: drift-3 35s infinite alternate ease-in-out;
+    animation: drift-3 24s infinite alternate ease-in-out;
 }
 
 @keyframes drift-1 {
@@ -390,10 +390,10 @@ html.dark .glow-blob {
         transform: translate(0, 0) scale(1);
     }
     33% {
-        transform: translate(8vw, 12vh) scale(1.08);
+        transform: translate(16vw, 20vh) scale(1.1);
     }
     66% {
-        transform: translate(-4vw, 20vh) scale(0.92);
+        transform: translate(-10vw, 30vh) scale(0.9);
     }
     100% {
         transform: translate(0, 0) scale(1);
@@ -405,7 +405,7 @@ html.dark .glow-blob {
         transform: translate(0, 0) scale(1);
     }
     50% {
-        transform: translate(-12vw, -8vh) scale(0.88);
+        transform: translate(-25vw, -15vh) scale(0.85);
     }
     100% {
         transform: translate(0, 0) scale(1);
@@ -417,7 +417,7 @@ html.dark .glow-blob {
         transform: translate(0, 0) scale(1);
     }
     40% {
-        transform: translate(12vw, -16vh) scale(1.12);
+        transform: translate(20vw, -25vh) scale(1.15);
     }
     100% {
         transform: translate(0, 0) scale(1);
