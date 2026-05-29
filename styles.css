@@ -12,6 +12,7 @@
     --glow-1: #14b8a6;
     --glow-2: #eab308;
     --glow-3: #f43f5e;
+    --glow-4: #6366f1;
 
     --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
@@ -31,6 +32,7 @@ html.dark {
     --glow-1: #14b8a6;
     --glow-2: #eab308;
     --glow-3: #f43f5e;
+    --glow-4: #6366f1;
 }
 
 /* ============================================
@@ -385,6 +387,15 @@ html.dark .glow-blob {
     animation: drift-3 24s infinite alternate ease-in-out;
 }
 
+.glow-4 {
+    top: -15%;
+    left: -10%;
+    width: 50vw;
+    height: 50vw;
+    background-color: var(--glow-4);
+    animation: drift-4 12s infinite alternate ease-in-out;
+}
+
 @keyframes drift-1 {
     0% {
         transform: translate(0, 0) scale(1);
@@ -418,6 +429,18 @@ html.dark .glow-blob {
     }
     40% {
         transform: translate(20vw, -25vh) scale(1.15);
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+@keyframes drift-4 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(18vw, 15vh) scale(1.12);
     }
     100% {
         transform: translate(0, 0) scale(1);
