@@ -239,8 +239,8 @@ html.dark .icon-sun  { display: none; }
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: calc(100% - 48px);
-    max-width: 290px;
+    width: calc(100% - 32px);
+    max-width: 320px;
     padding: 24px 20px;
     background-color: var(--overlay-bg);
     backdrop-filter: blur(16px);
