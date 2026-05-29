@@ -8,7 +8,7 @@
     --border: rgba(0, 0, 0, 0.08);
     --card-hover: rgba(0, 0, 0, 0.02);
     --placeholder: #f0f0f0;
-    --overlay-bg: rgba(252, 252, 252, 0.55);
+    --overlay-bg: rgba(252, 252, 252, 0.7);
     --glow-1: #14b8a6;
     --glow-2: #eab308;
     --glow-3: #f43f5e;
@@ -28,7 +28,7 @@ html.dark {
     --border: rgba(255, 255, 255, 0.08);
     --card-hover: rgba(255, 255, 255, 0.04);
     --placeholder: #1a1a1a;
-    --overlay-bg: rgba(10, 10, 10, 0.55);
+    --overlay-bg: rgba(10, 10, 10, 0.7);
     --glow-1: #14b8a6;
     --glow-2: #eab308;
     --glow-3: #f43f5e;
