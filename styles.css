@@ -9,6 +9,9 @@
     --card-hover: rgba(0, 0, 0, 0.02);
     --placeholder: #f0f0f0;
     --overlay-bg: rgba(252, 252, 252, 0.7);
+    --glow-1: #14b8a6;
+    --glow-2: #eab308;
+    --glow-3: #f43f5e;
 
     --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
@@ -25,6 +28,9 @@ html.dark {
     --card-hover: rgba(255, 255, 255, 0.04);
     --placeholder: #1a1a1a;
     --overlay-bg: rgba(10, 10, 10, 0.7);
+    --glow-1: #14b8a6;
+    --glow-2: #eab308;
+    --glow-3: #f43f5e;
 }
 
 /* ============================================
@@ -42,14 +48,14 @@ html {
 
 body {
     font-family: var(--font);
-    background-color: var(--bg);
+    background-color: transparent;
     color: var(--foreground);
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "liga" 1, "calt" 1;
     line-height: 1.5;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 a {
@@ -320,5 +326,100 @@ html.dark .icon-sun  { display: none; }
 
     .tiles-grid {
         gap: 12px;
+    }
+}
+
+/* ============================================
+   Fluid Background Glow
+   ============================================ */
+.background-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    background-color: var(--bg);
+    overflow: hidden;
+    pointer-events: none;
+    transition: background-color 0.3s ease;
+}
+
+.glow-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(140px);
+    -webkit-filter: blur(140px);
+    opacity: 0.12; /* Subtle, delicate light theme glow */
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+html.dark .glow-blob {
+    opacity: 0.05; /* Extremely dark, mysterious, subtle dark theme glow */
+}
+
+.glow-1 {
+    top: -10%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background-color: var(--glow-1);
+    animation: drift-1 25s infinite alternate ease-in-out;
+}
+
+.glow-2 {
+    bottom: -15%;
+    left: -10%;
+    width: 50vw;
+    height: 50vw;
+    background-color: var(--glow-2);
+    animation: drift-2 30s infinite alternate ease-in-out;
+}
+
+.glow-3 {
+    top: 30%;
+    right: 15%;
+    width: 45vw;
+    height: 45vw;
+    background-color: var(--glow-3);
+    animation: drift-3 35s infinite alternate ease-in-out;
+}
+
+@keyframes drift-1 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(8vw, 12vh) scale(1.08);
+    }
+    66% {
+        transform: translate(-4vw, 20vh) scale(0.92);
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+@keyframes drift-2 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(-12vw, -8vh) scale(0.88);
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+@keyframes drift-3 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    40% {
+        transform: translate(12vw, -16vh) scale(1.12);
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
     }
 }
