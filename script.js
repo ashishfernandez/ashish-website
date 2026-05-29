@@ -1,4 +1,23 @@
 /* ============================================
+   Dark Mode Toggle
+   ============================================ */
+(function () {
+    const toggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    // Check saved preference, fall back to system preference
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+    }
+
+    toggle.addEventListener('click', () => {
+        html.classList.toggle('dark');
+        localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+})();
+
+/* ============================================
    3D Tilt Effect on Tiles
    ============================================ */
 (function () {

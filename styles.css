@@ -7,12 +7,22 @@
     --muted: #737373;
     --border: rgba(0, 0, 0, 0.08);
     --card-hover: rgba(0, 0, 0, 0.02);
+    --placeholder: #f0f0f0;
 
     --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
     --radius: 16px;
     --container: 1200px;
     --transition: 0.2s ease;
+}
+
+html.dark {
+    --bg: #0a0a0a;
+    --foreground: #fcfcfc;
+    --muted: #a1a1a1;
+    --border: rgba(255, 255, 255, 0.08);
+    --card-hover: rgba(255, 255, 255, 0.04);
+    --placeholder: #1a1a1a;
 }
 
 /* ============================================
@@ -37,6 +47,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "liga" 1, "calt" 1;
     line-height: 1.5;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -82,12 +93,44 @@ a {
     margin: 0 auto;
 }
 
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .logo {
     font-size: 1rem;
     font-weight: 600;
     color: var(--foreground);
     letter-spacing: -0.01em;
 }
+
+/* Theme toggle */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color var(--transition), background-color var(--transition);
+}
+
+.theme-toggle:hover {
+    color: var(--foreground);
+    background-color: var(--card-hover);
+}
+
+.icon-moon { display: none; }
+.icon-sun  { display: block; }
+
+html.dark .icon-moon { display: block; }
+html.dark .icon-sun  { display: none; }
 
 .header-links {
     display: flex;
@@ -171,7 +214,7 @@ a {
 .tile-image {
     width: 100%;
     aspect-ratio: 1 / 1;
-    background-color: #f0f0f0;
+    background-color: var(--placeholder);
     border-radius: var(--radius);
     overflow: hidden;
 }
