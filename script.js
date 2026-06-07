@@ -5,9 +5,9 @@
     const toggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
 
-    // Check saved preference, fall back to system preference
+    // Check saved preference, default to dark mode
     const saved = localStorage.getItem('theme');
-    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (saved !== 'light') {
         html.classList.add('dark');
     }
 
