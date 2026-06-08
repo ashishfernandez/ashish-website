@@ -583,11 +583,12 @@ html.dark .glow-blob {
 .external-title-link {
     display: inline-flex;
     align-items: center;
-    color: var(--muted);
-    transition: color var(--transition);
+    color: var(--foreground);
+    opacity: 0.25;
+    transition: opacity var(--transition);
     line-height: 1;
 }
 
 .external-title-link:hover {
-    color: var(--foreground);
+    opacity: 0.8;
 }
