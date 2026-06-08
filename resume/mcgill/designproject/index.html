@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ashish Fernandez — Design Project Presentation Viewer. Power Generation and Cogeneration.">
+    <title>McGill Design Project — Ashish Fernandez</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../styles.css?v=5">
+    <link rel="icon" type="image/jpeg" href="../../../assets/favicon.jpg">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+        if (localStorage.getItem('theme') !== 'light') {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+    <style>
+        .deck-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .deck-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-top: 24px;
+        }
+
+        .deck-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color var(--transition);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            font-family: inherit;
+        }
+
+        .action-btn:hover {
+            color: var(--foreground);
+        }
+
+        .slide-viewport {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-color: var(--placeholder);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease;
+        }
+
+        body.theater-mode .slide-viewport {
+            position: fixed;
+            top: 5vh;
+            left: 5vw;
+            width: 90vw;
+            height: 90vh;
+            aspect-ratio: auto;
+            z-index: 1000;
+            border-radius: 12px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+            background-color: #000;
+        }
+
+        body.theater-mode .background-glow {
+            display: none;
+        }
+
+        body.theater-mode .page {
+            filter: blur(10px);
+            pointer-events: none;
+        }
+
+        .theater-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 999;
+            cursor: pointer;
+        }
+
+        body.theater-mode .theater-overlay {
+            display: block;
+        }
+
+        #pdf-canvas {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .slide-nav-btn {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: background 0.3s ease, color 0.3s ease;
+            z-index: 10;
+        }
+
+        .slide-nav-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+        }
+
+        .slide-nav-btn.prev {
+            left: 0;
+        }
+
+        .slide-nav-btn.next {
+            right: 0;
+        }
+
+        .deck-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 4px;
+            background-color: var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: var(--glow-1);
+            transition: width 0.3s ease;
+        }
+
+        .deck-meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .loader-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--overlay-bg);
+            backdrop-filter: blur(10px);
+            z-index: 20;
+            color: var(--foreground);
+            font-weight: 500;
+            gap: 16px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 2.5px solid var(--border);
+            border-top-color: var(--glow-1);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Theater close button */
+        .close-theater-btn {
+            display: none;
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 1001;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            cursor: pointer;
+            transition: background var(--transition);
+        }
+
+        body.theater-mode .close-theater-btn {
+            display: flex;
+        }
+
+        .close-theater-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Fluid background glow blobs -->
+    <div class="background-glow" aria-hidden="true">
+        <div class="glow-blob glow-1"></div>
+        <div class="glow-blob glow-2"></div>
+        <div class="glow-blob glow-3"></div>
+        <div class="glow-blob glow-4"></div>
+    </div>
+
+    <!-- Theater Mode Overlay -->
+    <div class="theater-overlay" id="theater-overlay" aria-label="Exit theater mode"></div>
+    <button class="close-theater-btn" id="close-theater" aria-label="Close presentation view">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="page">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <a href="../../../" class="logo" aria-label="Ashish Fernandez home">AF</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+            <div class="header-links">
+                <a href="https://github.com/ashishfernandez" target="_blank" rel="noopener noreferrer" class="header-social" id="github-link" aria-label="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                </a>
+                <a href="https://linkedin.com/in/ashishfernandez" target="_blank" rel="noopener noreferrer" class="header-social" id="linkedin-link" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+            </div>
+        </header>
+
+        <!-- Main content -->
+        <main class="main">
+            <div class="deck-container">
+                <!-- Navigation Header -->
+                <div class="deck-header">
+                    <a href="../" class="back-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                        Back to Project
+                    </a>
+                    <div class="deck-actions">
+                        <button class="action-btn" id="theater-btn" title="Toggle full-screen theater mode">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+                            Theater Mode
+                        </button>
+                        <a href="../../../assets/designproject.pdf" download class="action-btn" title="Download raw PDF file">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide Frame -->
+                <div class="slide-viewport" id="slide-viewport">
+                    <!-- Custom Loading / Missing Overlay -->
+                    <div class="loader-overlay" id="deck-loader">
+                        <div class="spinner"></div>
+                        <p id="loader-status">Initializing PDF Viewer...</p>
+                    </div>
+
+                    <!-- Slide Canvas -->
+                    <canvas id="pdf-canvas"></canvas>
+
+                    <!-- Overlay Nav Navigation Controls -->
+                    <button class="slide-nav-btn prev" id="prev-slide" aria-label="Previous Page">‹</button>
+                    <button class="slide-nav-btn next" id="next-slide" aria-label="Next Page">›</button>
+                </div>
+
+                <!-- Deck Footer Progress Tracker -->
+                <div class="deck-footer">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="deck-progress"></div>
+                    </div>
+                    <div class="deck-meta-row">
+                        <span>Use Left/Right keys or drag to navigate</span>
+                        <span id="slide-counter">Slide 0 of 0</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 Ashish Fernandez | Updated June 2026</p>
+        </footer>
+    </div>
+
+    <script src="../../../script.js?v=2"></script>
+    <script>
+        // PDFJS Deck Script
+        const pdfUrl = '../../../assets/designproject.pdf';
+        let pdfDoc = null;
+        let pageNum = 1;
+        let pageRendering = false;
+        let pageNumPending = null;
+        const canvas = document.getElementById('pdf-canvas');
+        const ctx = canvas.getContext('2d');
+
+        const loader = document.getElementById('deck-loader');
+        const loaderStatus = document.getElementById('loader-status');
+        const slideCounter = document.getElementById('slide-counter');
+        const progressBar = document.getElementById('deck-progress');
+
+        // Load PDF Document
+        pdfjsLib.getDocument(pdfUrl).promise.then(doc => {
+            pdfDoc = doc;
+            loader.style.display = 'none';
+            renderPage(pageNum);
+        }).catch(err => {
+            console.error('Error loading PDF: ', err);
+            loader.querySelector('.spinner').style.display = 'none';
+            loaderStatus.innerHTML = `<strong>Presentation file not found.</strong><br><br>Please upload your presentation PDF to:<br><code style="background: rgba(0,0,0,0.15); padding: 4px 8px; border-radius: 4px; font-size: 0.9em; margin-top: 8px; display: inline-block;">/assets/designproject.pdf</code>`;
+        });
+
+        // Render Page
+        function renderPage(num) {
+            pageRendering = true;
+            pdfDoc.getPage(num).then(page => {
+                // Determine scale based on viewport size
+                const viewportWidth = document.getElementById('slide-viewport').clientWidth;
+                const baseViewport = page.getViewport({ scale: 1 });
+                const calculatedScale = (viewportWidth / baseViewport.width) * 1.5; // Render 1.5x resolution for sharpness
+
+                const viewport = page.getViewport({ scale: calculatedScale });
+                
+                // Adjust pixel ratio for high DPI screens
+                const dpr = window.devicePixelRatio || 1;
+                canvas.width = viewport.width * dpr;
+                canvas.height = viewport.height * dpr;
+                canvas.style.width = '100%';
+                canvas.style.height = '100%';
+                
+                ctx.scale(dpr, dpr);
+
+                // Render PDF page into canvas context
+                const renderContext = {
+                    canvasContext: ctx,
+                    viewport: viewport
+                };
+                
+                const renderTask = page.render(renderContext);
+
+                // Wait for rendering to finish
+                renderTask.promise.then(() => {
+                    pageRendering = false;
+                    if (pageNumPending !== null) {
+                        renderPage(pageNumPending);
+                        pageNumPending = null;
+                    }
+                });
+            });
+
+            // Update Page Counters and Progress Bar
+            slideCounter.textContent = `Slide ${num} of ${pdfDoc.numPages}`;
+            progressBar.style.width = `${(num / pdfDoc.numPages) * 100}%`;
+        }
+
+        function queueRenderPage(num) {
+            if (pageRendering) {
+                pageNumPending = num;
+            } else {
+                renderPage(num);
+            }
+        }
+
+        // Navigate Pages
+        function onPrevPage() {
+            if (pageNum <= 1) return;
+            pageNum--;
+            queueRenderPage(pageNum);
+        }
+
+        function onNextPage() {
+            if (!pdfDoc || pageNum >= pdfDoc.numPages) return;
+            pageNum++;
+            queueRenderPage(pageNum);
+        }
+
+        document.getElementById('prev-slide').addEventListener('click', onPrevPage);
+        document.getElementById('next-slide').addEventListener('click', onNextPage);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowLeft') {
+                onPrevPage();
+            } else if (e.key === 'ArrowRight') {
+                onNextPage();
+            } else if (e.key === 'Escape' && document.body.classList.contains('theater-mode')) {
+                toggleTheaterMode();
+            }
+        });
+
+        // Resize Listener to recalculate canvas sizing
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (pdfDoc) renderPage(pageNum);
+            }, 100);
+        });
+
+        // Theater Mode Controls
+        const theaterBtn = document.getElementById('theater-btn');
+        const closeTheaterBtn = document.getElementById('close-theater');
+        const overlay = document.getElementById('theater-overlay');
+
+        function toggleTheaterMode() {
+            document.body.classList.toggle('theater-mode');
+            setTimeout(() => {
+                if (pdfDoc) renderPage(pageNum);
+            }, 300);
+        }
+
+        theaterBtn.addEventListener('click', toggleTheaterMode);
+        closeTheaterBtn.addEventListener('click', toggleTheaterMode);
+        overlay.addEventListener('click', toggleTheaterMode);
+
+        // Touch swipe gestures
+        let touchstartX = 0;
+        let touchendX = 0;
+
+        const viewport = document.getElementById('slide-viewport');
+        viewport.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        }, false);
+
+        viewport.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            handleGesture();
+        }, false);
+
+        function handleGesture() {
+            if (touchendX < touchstartX - 50) {
+                onNextPage(); // swiped left -> next page
+            }
+            if (touchendX > touchstartX + 50) {
+                onPrevPage(); // swiped right -> prev page
+            }
+        }
+    </script>
+</body>
+</html>
