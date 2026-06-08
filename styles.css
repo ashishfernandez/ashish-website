@@ -19,8 +19,8 @@
     --radius: 16px;
     --container: 1200px;
     --transition: 0.2s ease;
-    --theme-box-bg: var(--muted);
-    --theme-box-text: #fcfcfc;
+    --theme-box-bg: #e2e8f0;
+    --theme-box-text: var(--foreground);
 }
 
 html.dark {
@@ -36,7 +36,7 @@ html.dark {
     --glow-3: #f43f5e;
     --glow-4: #6366f1;
     --theme-box-bg: #1f2029;
-    --theme-box-text: #fcfcfc;
+    --theme-box-text: var(--foreground);
 }
 
 /* ============================================
