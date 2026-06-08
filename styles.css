@@ -188,6 +188,9 @@ html.dark .icon-sun  { display: none; }
     line-height: 1;
     letter-spacing: -0.025em;
     color: var(--foreground);
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
 }
 
 .hero-tagline {
@@ -587,6 +590,11 @@ html.dark .glow-blob {
     opacity: 0.25;
     transition: opacity var(--transition);
     line-height: 1;
+}
+
+.external-title-link svg {
+    width: 20px;
+    height: 20px;
 }
 
 .external-title-link:hover {
