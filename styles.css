@@ -524,14 +524,14 @@ html.dark .glow-blob {
 
 .detail-theme-box {
     padding: 20px 24px;
-    background-color: var(--theme-box-bg);
+    background-color: #171717;
     border-radius: 12px;
 }
 
 .detail-theme-text {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: var(--foreground);
+    color: #fcfcfc;
     font-weight: 500;
     font-style: italic;
 }
