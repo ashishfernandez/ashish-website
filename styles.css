@@ -450,5 +450,5 @@ html.dark .glow-blob {
 
 /* Custom positioning for Deepmind tile background image */
 #tile-deepmind .tile-image img {
-    object-position: calc(10% - 8px) 5%;
+    object-position: calc(10% + 1px) 5%;
 }
