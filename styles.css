@@ -447,3 +447,8 @@ html.dark .glow-blob {
         transform: translate(0, 0) scale(1);
     }
 }
+
+/* Custom positioning for Deepmind tile background image */
+#tile-deepmind .tile-image img {
+    object-position: 30% 20%;
+}
