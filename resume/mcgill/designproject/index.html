@@ -254,11 +254,7 @@
         <div class="glow-blob glow-4"></div>
     </div>
 
-    <!-- Theater Mode Overlay -->
-    <div class="theater-overlay" id="theater-overlay" aria-label="Exit theater mode"></div>
-    <button class="close-theater-btn" id="close-theater" aria-label="Close presentation view">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
+
 
     <div class="page">
         <!-- Header -->
@@ -289,16 +285,6 @@
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
                         Back to Project
                     </a>
-                    <div class="deck-actions">
-                        <button class="action-btn" id="theater-btn" title="Toggle full-screen theater mode">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
-                            Theater Mode
-                        </button>
-                        <a href="../../../assets/designproject.pdf" download class="action-btn" title="Download raw PDF file">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                            Download
-                        </a>
-                    </div>
                 </div>
 
                 <!-- Slide Frame -->
@@ -436,8 +422,6 @@
                 onPrevPage();
             } else if (e.key === 'ArrowRight') {
                 onNextPage();
-            } else if (e.key === 'Escape' && document.body.classList.contains('theater-mode')) {
-                toggleTheaterMode();
             }
         });
 
@@ -450,21 +434,7 @@
             }, 100);
         });
 
-        // Theater Mode Controls
-        const theaterBtn = document.getElementById('theater-btn');
-        const closeTheaterBtn = document.getElementById('close-theater');
-        const overlay = document.getElementById('theater-overlay');
 
-        function toggleTheaterMode() {
-            document.body.classList.toggle('theater-mode');
-            setTimeout(() => {
-                if (pdfDoc) renderPage(pageNum);
-            }, 300);
-        }
-
-        theaterBtn.addEventListener('click', toggleTheaterMode);
-        closeTheaterBtn.addEventListener('click', toggleTheaterMode);
-        overlay.addEventListener('click', toggleTheaterMode);
 
         // Touch swipe gestures
         let touchstartX = 0;
