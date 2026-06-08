@@ -579,3 +579,15 @@ html.dark .glow-blob {
         aspect-ratio: 4 / 3;
     }
 }
+
+.external-title-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--muted);
+    transition: color var(--transition);
+    line-height: 1;
+}
+
+.external-title-link:hover {
+    color: var(--foreground);
+}
