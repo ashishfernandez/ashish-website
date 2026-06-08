@@ -201,7 +201,8 @@ html.dark .icon-sun  { display: none; }
 }
 
 .tiles-grid {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     width: 100%;
 }
@@ -308,7 +309,7 @@ html.dark .icon-sun  { display: none; }
     }
 
     .tiles-grid {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         gap: 32px;
     }
 
