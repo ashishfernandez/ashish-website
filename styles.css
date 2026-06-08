@@ -19,6 +19,7 @@
     --radius: 16px;
     --container: 1200px;
     --transition: 0.2s ease;
+    --theme-box-bg: #eaeaea;
 }
 
 html.dark {
@@ -33,6 +34,7 @@ html.dark {
     --glow-2: #eab308;
     --glow-3: #f43f5e;
     --glow-4: #6366f1;
+    --theme-box-bg: #1f1f1f;
 }
 
 /* ============================================
@@ -522,8 +524,7 @@ html.dark .glow-blob {
 
 .detail-theme-box {
     padding: 20px 24px;
-    background-color: var(--placeholder);
-    border: 1px solid var(--border);
+    background-color: var(--theme-box-bg);
     border-radius: 12px;
 }
 
