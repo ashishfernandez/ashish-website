@@ -20,7 +20,7 @@
     --container: 1200px;
     --transition: 0.2s ease;
     --theme-box-bg: #cbd5e1;
-    --theme-box-text: var(--foreground);
+    --theme-box-text: #374151;
 }
 
 html.dark {
