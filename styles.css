@@ -592,3 +592,30 @@ html.dark .glow-blob {
 .external-title-link:hover {
     opacity: 0.8;
 }
+
+.detail-nav-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 24px;
+    margin-bottom: -24px;
+}
+
+.detail-nav-row .back-link {
+    margin-bottom: 0;
+}
+
+.next-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color var(--transition);
+}
+
+.next-link:hover {
+    color: var(--foreground);
+}
