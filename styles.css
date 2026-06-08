@@ -36,7 +36,7 @@ html.dark {
     --glow-3: #f43f5e;
     --glow-4: #6366f1;
     --theme-box-bg: #1f2029;
-    --theme-box-text: var(--foreground);
+    --theme-box-text: #e2e8f0;
 }
 
 /* ============================================
