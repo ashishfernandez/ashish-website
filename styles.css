@@ -452,3 +452,127 @@ html.dark .glow-blob {
 #tile-deepmind .tile-image img {
     object-position: center;
 }
+
+/* ============================================
+   Detail Pages
+   ============================================ */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color var(--transition);
+    margin-bottom: 8px;
+}
+
+.back-link:hover {
+    color: var(--foreground);
+}
+
+.detail-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 64px;
+    align-items: start;
+    width: 100%;
+}
+
+.detail-image-wrapper {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--border);
+    background-color: var(--placeholder);
+}
+
+.detail-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.detail-info {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.detail-header-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.detail-title {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--foreground);
+}
+
+.detail-meta {
+    font-size: 1rem;
+    color: var(--muted);
+    font-weight: 400;
+}
+
+.detail-theme-box {
+    padding: 20px 24px;
+    background-color: var(--card-hover);
+    border-left: 3px solid var(--glow-4);
+    border-radius: 4px 12px 12px 4px;
+}
+
+.detail-theme-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--foreground);
+    font-weight: 500;
+    font-style: italic;
+}
+
+.detail-body-block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.detail-bullets {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-left: 0;
+}
+
+.detail-bullets li {
+    position: relative;
+    padding-left: 24px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--muted);
+}
+
+.detail-bullets li::before {
+    content: "•";
+    position: absolute;
+    left: 4px;
+    color: var(--glow-1);
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+    .detail-layout {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    
+    .detail-image-wrapper {
+        aspect-ratio: 4 / 3;
+    }
+}
