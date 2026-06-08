@@ -55,35 +55,120 @@
                 </a>
             </div>
 
-            <!-- Detail Layout -->
-            <section class="detail-layout">
-                <!-- 3D Tiltable Visual Card representing the role background -->
-                <div class="tile detail-image-wrapper">
-                    <img src="../../assets/deepmind.jpg" alt="Sketch of the Google Bay View dome campus and DeepMind swirl logo representing career role">
+            <!-- Boarding Pass Container -->
+            <div class="ticket-container">
+                <div class="boarding-pass">
+                    
+                    <!-- Main Pass (Left) -->
+                    <div class="ticket-main">
+                        <div class="ticket-header">
+                            <span class="ticket-brand">Google Deepmind</span>
+                            <span class="ticket-type">First Class Boarding Pass</span>
+                        </div>
+
+                        <!-- Departure / Destination -->
+                        <div class="ticket-route">
+                            <div class="route-airport">
+                                <span class="airport-code">MTV</span>
+                                <span class="airport-name">Mountain View</span>
+                            </div>
+                            <div class="route-arrow">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8"/><polyline points="10 21 15 16 10 11"/><path d="M15 16H3"/></svg>
+                            </div>
+                            <div class="route-airport" style="text-align: right;">
+                                <span class="airport-code">GEM</span>
+                                <span class="airport-name">Gemini Post-Training</span>
+                            </div>
+                        </div>
+
+                        <!-- Ticket details grid -->
+                        <div class="ticket-grid">
+                            <div class="ticket-field">
+                                <span class="field-label">Passenger Name</span>
+                                <span class="field-value">Ashish Fernandez</span>
+                            </div>
+                            <div class="ticket-field">
+                                <span class="field-label">Seat / Role</span>
+                                <span class="field-value">Senior Program Manager</span>
+                            </div>
+                            <div class="ticket-field">
+                                <span class="field-label">Date / Duration</span>
+                                <span class="field-value">Apr 2025 - May 2026</span>
+                            </div>
+                            <div class="ticket-field">
+                                <span class="field-label">Location / Gate</span>
+                                <span class="field-value">Mountain View, CA</span>
+                            </div>
+                        </div>
+
+                        <!-- Theme Box (Middle Text) -->
+                        <div class="ticket-remarks">
+                            <blockquote class="remarks-text">
+                                Scaling Gemini's post training program through AI agents, automation, and better processes
+                            </blockquote>
+                        </div>
+
+                        <!-- Bullets (Flight logs) -->
+                        <div class="ticket-field">
+                            <span class="field-label">Flight logs / Achievements</span>
+                            <ul class="field-value-bullets">
+                                <li>Identified and launched technical solutions to scale data submissions, legal compliance, and tooling</li>
+                                <li>Creating AI agents and agentic workflows to scale work and post-training team contributions</li>
+                                <li>Created data submission improvement project to reduce data submission time from hours to minutes</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Ticket Stub (Right) -->
+                    <div class="ticket-stub">
+                        <!-- Background scenic image overlay -->
+                        <img src="../../assets/deepmind.jpg" class="ticket-stub-image" alt="Background DeepMind bay view dome visual watermark">
+                        
+                        <div class="ticket-stub-content">
+                            <div>
+                                <div class="ticket-header" style="border: none; padding-bottom: 0;">
+                                    <span class="ticket-brand" style="font-size: 0.75rem;">Deepmind</span>
+                                    <span class="ticket-type" style="font-size: 0.6rem;">Stub</span>
+                                </div>
+                                
+                                <div class="ticket-route" style="margin-top: 16px;">
+                                    <div class="route-airport">
+                                        <span class="airport-code" style="font-size: 1.5rem;">MTV</span>
+                                    </div>
+                                    <div style="font-weight: 800; color: var(--muted); font-size: 1.1rem; padding: 0 4px;">➔</div>
+                                    <div class="route-airport">
+                                        <span class="airport-code" style="font-size: 1.5rem;">GEM</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <div class="ticket-field">
+                                    <span class="field-label" style="font-size: 0.55rem;">Passenger</span>
+                                    <span class="field-value" style="font-size: 0.8rem;">A. Fernandez</span>
+                                </div>
+                                <div class="ticket-field">
+                                    <span class="field-label" style="font-size: 0.55rem;">Seat</span>
+                                    <span class="field-value" style="font-size: 0.8rem;">Sr. PM</span>
+                                </div>
+                                <div class="ticket-field">
+                                    <span class="field-label" style="font-size: 0.55rem;">Date</span>
+                                    <span class="field-value" style="font-size: 0.75rem; font-weight: 500;">Apr 2025 - May 026</span>
+                                </div>
+                            </div>
+
+                            <!-- Pure CSS barcode wrapper -->
+                            <div class="barcode-wrapper">
+                                <div class="barcode" aria-hidden="true">
+                                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                </div>
+                                <span class="barcode-num">GEMINI-POST-TRAINING</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-
-                <!-- Role Details -->
-                <div class="detail-info">
-                    <div class="detail-header-block">
-                        <h1 class="detail-title">Senior Program Manager - Gemini Post-Training</h1>
-                        <p class="detail-meta">Mountain View, CA | Apr 2025 - May 2026</p>
-                    </div>
-
-                    <div class="detail-theme-box">
-                        <blockquote class="detail-theme-text">
-                            Scaling Gemini's post training program through AI agents, automation, and better processes
-                        </blockquote>
-                    </div>
-
-                    <div class="detail-body-block">
-                        <ul class="detail-bullets">
-                            <li>Identified and launched technical solutions to scale data submissions, legal compliance, and tooling</li>
-                            <li>Creating AI agents and agentic workflows to scale work and post-training team contributions</li>
-                            <li>Created data submission improvement project to reduce data submission time from hours to minutes</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+            </div>
         </main>
 
         <!-- Footer -->
