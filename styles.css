@@ -522,7 +522,8 @@ html.dark .glow-blob {
 
 .detail-theme-box {
     padding: 20px 24px;
-    background-color: var(--card-hover);
+    background-color: var(--placeholder);
+    border: 1px solid var(--border);
     border-radius: 12px;
 }
 
