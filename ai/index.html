@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ashish Fernandez — Resume, builds, and thoughts. A personal hub.">
-    <title>Ashish Fernandez</title>
+    <meta name="description" content="Ashish Fernandez — AI Builds and products created using various AI tools.">
+    <title>AI Builds — Ashish Fernandez</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=6">
-    <link rel="icon" type="image/jpeg" href="assets/favicon.jpg">
+    <link rel="stylesheet" href="../styles.css?v=6">
+    <link rel="icon" type="image/jpeg" href="../assets/favicon.jpg">
     <script>
         if (localStorage.getItem('theme') !== 'light') {
             document.documentElement.classList.add('dark');
@@ -29,7 +29,7 @@
         <!-- Header -->
         <header class="header">
             <div class="header-left">
-                <a href="/" class="logo" aria-label="Ashish Fernandez home">AF</a>
+                <a href="../" class="logo" aria-label="Ashish Fernandez home">AF</a>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
                     <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                     <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -50,41 +50,51 @@
             <!-- Hero -->
             <section class="hero">
                 <div class="hero-text">
-                    <h1 class="hero-name">Ashish Fernandez</h1>
-                    <p class="hero-tagline">Just keep going.</p>
+                    <h1 class="hero-name">My AI Builds</h1>
+                    <p class="hero-tagline">Products I've built using various AI tools.</p>
                 </div>
             </section>
 
             <!-- Tiles -->
             <section class="tiles-section">
                 <div class="tiles-grid" id="tiles-grid">
-                    <a href="resume/" class="tile" id="tile-resume">
+                    <a href="#" class="tile" id="tile-squawk">
                         <div class="tile-image">
-                            <img src="assets/resume.jpg" alt="Sketch of Google DeepMind and Shell logos representing resume and career journey">
+                            <img src="../assets/squawk.jpg" alt="Sketch of a Cessna aircraft and Flight Hours log representing Squawk pilot community">
                         </div>
                         <div class="tile-text">
-                            <p class="tile-title">My Resume</p>
-                            <p class="tile-desc">My experience, skills, and background.</p>
+                            <p class="tile-title">Squawk</p>
+                            <p class="tile-desc">A community for pilots</p>
                         </div>
                     </a>
 
-                    <a href="ai/" class="tile" id="tile-builds">
+                    <a href="#" class="tile" id="tile-worldcup">
                         <div class="tile-image">
-                            <img src="assets/builds.jpg" alt="Sketch with a plane, a soccer ball, a unicorn, and the word squawk representing builds">
+                            <img src="../assets/worldcup.png" alt="Sketch of a modern soccer stadium and ball representing World Cup 2026 pool app">
                         </div>
                         <div class="tile-text">
-                            <p class="tile-title">My AI Builds</p>
-                            <p class="tile-desc">Products I've built using various AI tools.</p>
+                            <p class="tile-title">World Cup 2026</p>
+                            <p class="tile-desc">Soccer pool with payments</p>
                         </div>
                     </a>
 
-                    <a href="#" class="tile" id="tile-thoughts">
+                    <a href="#" class="tile" id="tile-unicorn">
                         <div class="tile-image">
-                            <img src="assets/thoughts.png" alt="Sketch representing thoughts, articles, and newsletters">
+                            <img src="../assets/unicorn.png" alt="Sketch of a majestic unicorn running in a dark fantasy forest representing Unicorn Game">
                         </div>
                         <div class="tile-text">
-                            <p class="tile-title">My Thoughts</p>
-                            <p class="tile-desc">Ideas, reflections, and things on my mind.</p>
+                            <p class="tile-title">Unicorn Game</p>
+                            <p class="tile-desc">Survival game with difficulty levels</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="tile" id="tile-website">
+                        <div class="tile-image">
+                            <img src="../assets/website.png" alt="Sketch of a laptop with code lines representing ashishfernandez.com portfolio website">
+                        </div>
+                        <div class="tile-text">
+                            <p class="tile-title">ashishfernandez.com</p>
+                            <p class="tile-desc">Building the website you're on</p>
                         </div>
                     </a>
                 </div>
@@ -97,6 +107,6 @@
         </footer>
     </div>
 
-    <script src="script.js?v=2"></script>
+    <script src="../script.js?v=2"></script>
 </body>
 </html>
