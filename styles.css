@@ -627,3 +627,23 @@ html.dark .glow-blob {
 .next-link:hover {
     color: var(--foreground);
 }
+
+.prev-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color var(--transition);
+}
+
+.prev-link:hover {
+    color: var(--foreground);
+}
+
+.nav-right-group {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
