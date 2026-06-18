@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ashish Fernandez — AI Builds and products created using various AI tools.">
-    <title>AI Builds — Ashish Fernandez</title>
+    <meta name="description" content="Squawk — A flying community for pilots. Part of Ashish Fernandez's AI Builds.">
+    <title>Squawk — Ashish Fernandez</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -47,56 +47,52 @@
 
         <!-- Main content -->
         <main class="main">
+            <!-- Navigation Row -->
+            <div class="detail-nav-row">
+                <a href="../ai/" class="back-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                    Back to AI Builds
+                </a>
+            </div>
+
             <!-- Hero -->
             <section class="hero">
                 <div class="hero-text">
-                    <h1 class="hero-name">My AI Builds</h1>
-                    <p class="hero-tagline">Products I've built using various AI tools.</p>
+                    <h1 class="hero-name">Squawk</h1>
                 </div>
             </section>
 
-            <!-- Tiles -->
-            <section class="tiles-section">
-                <div class="tiles-grid" id="tiles-grid">
-                    <a href="../squawk/" class="tile" id="tile-squawk">
-                        <div class="tile-image">
-                            <img src="../assets/squawk.png" alt="Sketch of a Cessna aircraft and Flight Hours log representing Squawk pilot community">
-                        </div>
-                        <div class="tile-text">
-                            <p class="tile-title">Squawk</p>
-                            <p class="tile-desc">A flying community for pilots</p>
-                        </div>
-                    </a>
+            <!-- Detail Layout -->
+            <section class="detail-layout">
+                <!-- Visual Card -->
+                <div class="tile detail-image-wrapper">
+                    <img src="../assets/squawk.png" alt="Sketch of a Cessna aircraft and Flight Hours log representing Squawk pilot community">
+                </div>
 
-                    <a href="#" class="tile" id="tile-worldcup">
-                        <div class="tile-image">
-                            <img src="../assets/worldcup.jpg" alt="Sketch of the FIFA World Cup trophy with maple leaf, stars, and 2026 text representing World Cup 2026 pool app">
-                        </div>
-                        <div class="tile-text">
-                            <p class="tile-title">World Cup 2026</p>
-                            <p class="tile-desc">Soccer pool with payments</p>
-                        </div>
-                    </a>
+                <!-- Product Details -->
+                <div class="detail-info">
+                    <div class="detail-header-block">
+                        <h1 class="detail-title">A flying community for pilots</h1>
+                        <p class="detail-meta">AI-Assisted Build</p>
+                    </div>
 
-                    <a href="#" class="tile" id="tile-unicorn">
-                        <div class="tile-image">
-                            <img src="../assets/unicorn.jpg" alt="Sketch of a cute cartoon unicorn surrounded by barn, lake, fields, and orchard panels representing Unicorn Game">
-                        </div>
-                        <div class="tile-text">
-                            <p class="tile-title">Unicorn Game</p>
-                            <p class="tile-desc">Survival game of increasing difficulty</p>
-                        </div>
-                    </a>
+                    <div class="detail-theme-box">
+                        <blockquote class="detail-theme-text">
+                            Connecting aviators and simplifying logbook tracking with AI-powered flight insight
+                        </blockquote>
+                    </div>
 
-                    <a href="#" class="tile" id="tile-website">
-                        <div class="tile-image">
-                            <img src="../assets/website.jpg" alt="Sketch collage of a grid of square panels containing drawings of a self-driving car, stadium, flowchart, astronaut cat, mobile phone, refinery, chemistry equipment, and a globe representing ashishfernandez.com portfolio website">
-                        </div>
-                        <div class="tile-text">
-                            <p class="tile-title">ashishfernandez.com</p>
-                            <p class="tile-desc">Building this website you're on</p>
-                        </div>
-                    </a>
+                    <div class="detail-body-block">
+                        <ul class="detail-bullets">
+                            <li>Social community for general aviation pilots and student pilots</li>
+                            <li>Includes digital flying logbook that automatically tracks license progress against FAA's 14 CFR Part 61 requirements for private pilots</li>
+                            <li>Allows aviators to track and follow other pilots and like and comment on their flights</li>
+                            <li>Enables aviators to find new pilot friends using local airport codes</li>
+                            <li>Pilots can earn badges for hours and cool things they've done</li>
+                            <li>Syncs real time leaderboards and earned badges to the live landing page</li>
+                            <li>Background Google Analytics, ads, and usage tracking</li>
+                        </ul>
+                    </div>
                 </div>
             </section>
         </main>
