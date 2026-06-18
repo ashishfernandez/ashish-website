@@ -700,15 +700,15 @@ html.dark .glow-blob {
 }
 
 .meta-chip.link-chip {
-    background-color: rgba(99, 102, 241, 0.08);
-    color: var(--glow-4);
-    border-color: rgba(99, 102, 241, 0.3);
+    background-color: rgba(20, 184, 166, 0.08);
+    color: var(--glow-1);
+    border-color: rgba(20, 184, 166, 0.3);
     font-weight: 600;
 }
 
 .meta-chip.link-chip:hover {
-    background-color: rgba(99, 102, 241, 0.15);
-    border-color: var(--glow-4);
+    background-color: rgba(20, 184, 166, 0.15);
+    border-color: var(--glow-1);
 }
 
 @media (max-width: 600px) {
