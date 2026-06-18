@@ -725,6 +725,12 @@ html.dark .glow-blob {
     border-color: rgba(99, 102, 241, 0.3);
 }
 
+.meta-chip.green-chip {
+    background-color: rgba(20, 184, 166, 0.08);
+    color: var(--glow-1);
+    border-color: rgba(20, 184, 166, 0.3);
+}
+
 @media (max-width: 600px) {
     .detail-meta-row {
         flex-direction: column;
