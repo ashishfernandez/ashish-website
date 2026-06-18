@@ -547,6 +547,14 @@ html.dark .glow-blob {
     gap: 16px;
 }
 
+.detail-section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--foreground);
+    letter-spacing: -0.01em;
+}
+
 .detail-bullets {
     list-style-type: none;
     display: flex;
