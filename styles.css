@@ -647,3 +647,78 @@ html.dark .glow-blob {
     align-items: center;
     gap: 36px;
 }
+
+/* Metadata Section and Chips */
+.detail-meta-section {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 24px 0;
+    margin: 8px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.detail-meta-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.detail-meta-label {
+    font-weight: 600;
+    color: var(--foreground);
+    width: 100px;
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-top: 3px;
+}
+
+.detail-meta-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.meta-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background-color: var(--theme-box-bg);
+    opacity: 0.95;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--theme-box-text);
+    transition: opacity var(--transition), background-color var(--transition);
+}
+
+.meta-chip.link-chip {
+    background-color: rgba(99, 102, 241, 0.08);
+    color: var(--glow-4);
+    border-color: rgba(99, 102, 241, 0.3);
+    font-weight: 600;
+}
+
+.meta-chip.link-chip:hover {
+    background-color: rgba(99, 102, 241, 0.15);
+    border-color: var(--glow-4);
+}
+
+@media (max-width: 600px) {
+    .detail-meta-row {
+        flex-direction: column;
+        gap: 6px;
+    }
+    .detail-meta-label {
+        width: auto;
+        padding-top: 0;
+    }
+}
+
