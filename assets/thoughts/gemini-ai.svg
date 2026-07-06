@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <style>
+    .stroke-main { stroke: var(--foreground); fill: none; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+    .stroke-accent { stroke: var(--glow-1); fill: none; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+    .stroke-muted { stroke: var(--muted); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; opacity: 0.5; stroke-dasharray: 6 8; }
+    .fill-bg { fill: var(--placeholder); }
+  </style>
+  <rect width="100%" height="100%" class="fill-bg" />
+  
+  <line x1="50" y1="0" x2="50" y2="400" class="stroke-muted" />
+  <line x1="150" y1="0" x2="150" y2="400" class="stroke-muted" />
+  <line x1="250" y1="0" x2="250" y2="400" class="stroke-muted" />
+  <line x1="350" y1="0" x2="350" y2="400" class="stroke-muted" />
+  <line x1="0" y1="50" x2="400" y2="50" class="stroke-muted" />
+  <line x1="0" y1="150" x2="400" y2="150" class="stroke-muted" />
+  <line x1="0" y1="250" x2="400" y2="250" class="stroke-muted" />
+  <line x1="0" y1="350" x2="400" y2="350" class="stroke-muted" />
+
+  <!-- Neural Net Nodes & Connections -->
+  <line x1="100" y1="200" x2="200" y2="120" class="stroke-muted" />
+  <line x1="100" y1="200" x2="200" y2="280" class="stroke-muted" />
+  <line x1="200" y1="120" x2="300" y2="200" class="stroke-muted" />
+  <line x1="200" y1="280" x2="300" y2="200" class="stroke-muted" />
+  <line x1="200" y1="120" x2="200" y2="280" class="stroke-muted" />
+
+  <!-- Nodes -->
+  <circle cx="100" cy="200" r="16" class="stroke-main" />
+  <circle cx="200" cy="120" r="16" class="stroke-main" />
+  <circle cx="200" cy="280" r="16" class="stroke-main" />
+  <circle cx="300" cy="200" r="16" class="stroke-main" />
+
+  <!-- Inner Sparkle/Gemini Star -->
+  <path d="M 200,150 Q 200,200 150,200 Q 200,200 200,250 Q 200,200 250,200 Q 200,200 200,150 Z" class="stroke-accent" />
+  <circle cx="200" cy="200" r="6" fill="var(--glow-1)" />
+
+  <path d="M 100,200 L 105,190" class="stroke-main" />
+  <path d="M 300,200 L 295,210" class="stroke-main" />
+</svg>

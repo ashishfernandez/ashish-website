@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <style>
+    .stroke-main { stroke: var(--foreground); fill: none; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+    .stroke-accent { stroke: var(--glow-4); fill: none; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+    .stroke-muted { stroke: var(--muted); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; opacity: 0.5; stroke-dasharray: 6 8; }
+    .fill-bg { fill: var(--placeholder); }
+  </style>
+  <rect width="100%" height="100%" class="fill-bg" />
+  
+  <line x1="50" y1="0" x2="50" y2="400" class="stroke-muted" />
+  <line x1="150" y1="0" x2="150" y2="400" class="stroke-muted" />
+  <line x1="250" y1="0" x2="250" y2="400" class="stroke-muted" />
+  <line x1="350" y1="0" x2="350" y2="400" class="stroke-muted" />
+  <line x1="0" y1="50" x2="400" y2="50" class="stroke-muted" />
+  <line x1="0" y1="150" x2="400" y2="150" class="stroke-muted" />
+  <line x1="0" y1="250" x2="400" y2="250" class="stroke-muted" />
+  <line x1="0" y1="350" x2="400" y2="350" class="stroke-muted" />
+
+  <!-- Tower structure (Left) -->
+  <path d="M 100,320 L 130,160 L 160,320" class="stroke-main" />
+  <line x1="115" y1="240" x2="145" y2="240" class="stroke-main" />
+  <line x1="108" y1="280" x2="152" y2="280" class="stroke-main" />
+  <line x1="100" y1="320" x2="160" y2="320" class="stroke-main" />
+  <line x1="130" y1="160" x2="130" y2="130" class="stroke-main" />
+
+  <!-- Antenna Waves (Glowing) -->
+  <path d="M 115,115 A 25,25 0 0,1 145,115" class="stroke-accent" />
+  <path d="M 100,100 A 45,45 0 0,1 160,100" class="stroke-accent" />
+  <path d="M 85,85 A 65,65 0 0,1 175,85" class="stroke-accent" />
+
+  <!-- Peer to peer connections (Right) -->
+  <circle cx="280" cy="180" r="16" class="stroke-main" />
+  <circle cx="320" cy="260" r="12" class="stroke-main" />
+  <circle cx="240" cy="270" r="12" class="stroke-main" />
+  
+  <line x1="130" y1="130" x2="280" y2="180" class="stroke-accent" stroke-dasharray="4 4" />
+  <line x1="280" y1="180" x2="320" y2="260" class="stroke-muted" />
+  <line x1="280" y1="180" x2="240" y2="270" class="stroke-muted" />
+  <line x1="240" y1="270" x2="320" y2="260" class="stroke-muted" />
+</svg>

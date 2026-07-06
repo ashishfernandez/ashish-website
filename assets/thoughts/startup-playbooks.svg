@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <style>
+    .stroke-main { stroke: var(--foreground); fill: none; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+    .stroke-accent { stroke: var(--glow-2); fill: none; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+    .stroke-muted { stroke: var(--muted); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; opacity: 0.5; stroke-dasharray: 6 8; }
+    .fill-bg { fill: var(--placeholder); }
+  </style>
+  <rect width="100%" height="100%" class="fill-bg" />
+  
+  <line x1="50" y1="0" x2="50" y2="400" class="stroke-muted" />
+  <line x1="150" y1="0" x2="150" y2="400" class="stroke-muted" />
+  <line x1="250" y1="0" x2="250" y2="400" class="stroke-muted" />
+  <line x1="350" y1="0" x2="350" y2="400" class="stroke-muted" />
+  <line x1="0" y1="50" x2="400" y2="50" class="stroke-muted" />
+  <line x1="0" y1="150" x2="400" y2="150" class="stroke-muted" />
+  <line x1="0" y1="250" x2="400" y2="250" class="stroke-muted" />
+  <line x1="0" y1="350" x2="400" y2="350" class="stroke-muted" />
+
+  <!-- Book / Playbook outline -->
+  <path d="M 120,100 L 280,100 L 280,300 L 120,300 Z" class="stroke-main" />
+  <!-- Book spine rings -->
+  <path d="M 120,130 C 100,130 100,140 120,140" class="stroke-main" />
+  <path d="M 120,180 C 100,180 100,190 120,190" class="stroke-main" />
+  <path d="M 120,230 C 100,230 100,240 120,240" class="stroke-main" />
+  
+  <!-- Playbook Details / Checklist -->
+  <line x1="150" y1="140" x2="250" y2="140" class="stroke-muted" />
+  <line x1="150" y1="170" x2="230" y2="170" class="stroke-muted" />
+  <line x1="150" y1="200" x2="250" y2="200" class="stroke-muted" />
+  
+  <!-- Rocket/Launch sketch overlapping -->
+  <path d="M 230,220 C 230,170 260,140 260,140 C 260,140 290,170 290,220 Z" class="stroke-accent" />
+  <path d="M 230,220 L 220,240 L 240,235 L 250,220" class="stroke-accent" />
+  <path d="M 290,220 L 300,240 L 280,235 L 270,220" class="stroke-accent" />
+  <path d="M 260,220 L 260,250" class="stroke-accent" stroke-dasharray="3 3" />
+</svg>

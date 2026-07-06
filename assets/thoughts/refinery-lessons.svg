@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <style>
+    .stroke-main { stroke: var(--foreground); fill: none; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+    .stroke-accent { stroke: var(--glow-2); fill: none; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+    .stroke-muted { stroke: var(--muted); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; opacity: 0.5; stroke-dasharray: 6 8; }
+    .fill-bg { fill: var(--placeholder); }
+  </style>
+  <rect width="100%" height="100%" class="fill-bg" />
+  
+  <line x1="50" y1="0" x2="50" y2="400" class="stroke-muted" />
+  <line x1="150" y1="0" x2="150" y2="400" class="stroke-muted" />
+  <line x1="250" y1="0" x2="250" y2="400" class="stroke-muted" />
+  <line x1="350" y1="0" x2="350" y2="400" class="stroke-muted" />
+  <line x1="0" y1="50" x2="400" y2="50" class="stroke-muted" />
+  <line x1="0" y1="150" x2="400" y2="150" class="stroke-muted" />
+  <line x1="0" y1="250" x2="400" y2="250" class="stroke-muted" />
+  <line x1="0" y1="350" x2="400" y2="350" class="stroke-muted" />
+
+  <!-- Refinery Distillation Column (Left) -->
+  <rect x="100" y="100" width="60" height="220" rx="8" class="stroke-main" />
+  <line x1="100" y1="150" x2="160" y2="150" class="stroke-main" />
+  <line x1="100" y1="200" x2="160" y2="200" class="stroke-main" />
+  <line x1="100" y1="250" x2="160" y2="250" class="stroke-main" />
+  
+  <!-- Pipelines/Valves coming out -->
+  <path d="M 160,125 L 220,125 L 220,240 L 280,240" class="stroke-accent" />
+  <path d="M 160,225 L 200,225 L 200,280 L 280,280" class="stroke-muted" />
+
+  <!-- Gear/Valve Wheel symbol (Right) -->
+  <circle cx="280" cy="240" r="16" class="stroke-main" />
+  <circle cx="280" cy="240" r="6" class="stroke-main" />
+  <line x1="280" y1="220" x2="280" y2="260" class="stroke-main" />
+  <line x1="260" y1="240" x2="300" y2="240" class="stroke-main" />
+</svg>
