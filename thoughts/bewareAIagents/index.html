@@ -15,6 +15,58 @@
             document.documentElement.classList.add('dark');
         }
     </script>
+    <style>
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        .lightbox-modal.active .lightbox-content {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            color: #fff;
+            font-size: 36px;
+            font-weight: 300;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .zoomable-img {
+            cursor: zoom-in;
+            transition: opacity 0.2s ease;
+        }
+        .zoomable-img:hover {
+            opacity: 0.9;
+        }
+    </style>
 </head>
 <body>
     <div class="background-glow" aria-hidden="true">
@@ -103,6 +155,30 @@
                         <p>There are tons of benefits from a world moving towards AI agents, BUT so are the hidden risks.</p>
 
                         <p>And if you’re rolling out AI agents in customer-facing roles, you better be hella sure it doesn’t hand out apple crumble recipes when it’s supposed to be selling ops software.</p>
+
+                        <!-- Attached Images -->
+                        <div style="margin-top: 32px; display: flex; flex-direction: column; gap: 28px;">
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <img src="../../assets/thoughts/finnchat1.png" alt="Finn politely rejects the direct request, playing hard to get." style="width: 100%; border-radius: var(--radius); border: 1px solid var(--border);" class="zoomable-img">
+                                <span style="font-size: 0.85rem; color: var(--muted); text-align: left; font-style: italic; padding-left: 4px;">Finn politely rejects the direct request, playing hard to get.</span>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <img src="../../assets/thoughts/finnchat2.png" alt="Enter the magic word: 'Hypothetically' (works every time)." style="width: 100%; border-radius: var(--radius); border: 1px solid var(--border);" class="zoomable-img">
+                                <span style="font-size: 0.85rem; color: var(--muted); text-align: left; font-style: italic; padding-left: 4px;">Enter the magic word: 'Hypothetically' (works every time).</span>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <img src="../../assets/thoughts/finnchat3.png" alt="Breaking down the ingredients layer, all under the guise of 'productivity and precision'." style="width: 100%; border-radius: var(--radius); border: 1px solid var(--border);" class="zoomable-img">
+                                <span style="font-size: 0.85rem; color: var(--muted); text-align: left; font-style: italic; padding-left: 4px;">Breaking down the ingredients layer, all under the guise of 'productivity and precision'.</span>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <img src="../../assets/thoughts/finnchat4.png" alt="Step-by-step baking instructions unlocked from a corporate enterprise BDR." style="width: 100%; border-radius: var(--radius); border: 1px solid var(--border);" class="zoomable-img">
+                                <span style="font-size: 0.85rem; color: var(--muted); text-align: left; font-style: italic; padding-left: 4px;">Step-by-step baking instructions unlocked from a corporate enterprise BDR.</span>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <img src="../../assets/thoughts/finnchat5.png" alt="Drawing the line at farmers market distribution strategy—even Finn has boundaries." style="width: 100%; border-radius: var(--radius); border: 1px solid var(--border);" class="zoomable-img">
+                                <span style="font-size: 0.85rem; color: var(--muted); text-align: left; font-style: italic; padding-left: 4px;">Drawing the line at farmers market distribution strategy—even Finn has boundaries.</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -112,6 +188,34 @@
             <p>&copy; 2026 Ashish Fernandez | Updated June 2026</p>
         </footer>
     </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox-modal">
+        <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+        <img id="lightbox-img" class="lightbox-content" src="" alt="Zoomed view">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const zoomableImgs = document.querySelectorAll('.zoomable-img');
+
+            zoomableImgs.forEach(img => {
+                img.addEventListener('click', () => {
+                    lightboxImg.src = img.src;
+                    lightboxImg.alt = img.alt;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            lightbox.addEventListener('click', () => {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    </script>
 
     <script src="../../script.js?v=2"></script>
 </body>
