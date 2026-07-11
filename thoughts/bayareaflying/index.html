@@ -15,6 +15,58 @@
             document.documentElement.classList.add('dark');
         }
     </script>
+    <style>
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        .lightbox-modal.active .lightbox-content {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            color: #fff;
+            font-size: 36px;
+            font-weight: 300;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .zoomable-img {
+            cursor: zoom-in;
+            transition: opacity 0.2s ease;
+        }
+        .zoomable-img:hover {
+            opacity: 0.9;
+        }
+    </style>
 </head>
 <body>
     <div class="background-glow" aria-hidden="true">
@@ -111,6 +163,18 @@
                         <p>There's a pilot saying that I love: “Stay ahead of the airplane. Never let an airplane take you somewhere your brain didn't arrive five minutes earlier.”</p>
 
                         <p>Whether you’re flying over San Francisco, building a product, or juggling the many things in your personal life -- the better your plan, the smoother (and less stressful) the ride. 🌴</p>
+
+                        <!-- Attached Images -->
+                        <div style="margin-top: 32px; display: flex; flex-direction: column; gap: 28px;">
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <img src="../../assets/thoughts/flightplan1.jpg" alt="Airspace overlay and SFO transition route planning" style="width: 100%; border-radius: var(--radius); border: 1px solid var(--border);" class="zoomable-img">
+                                <span style="font-size: 0.85rem; color: var(--muted); text-align: left; font-style: italic; padding-left: 4px;">Pic 1: Airspace overlay and SFO transition route planning</span>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <img src="../../assets/thoughts/flightplan2.jpg" alt="Golden Gate and Bay Tour flight planning" style="width: 100%; border-radius: var(--radius); border: 1px solid var(--border);" class="zoomable-img">
+                                <span style="font-size: 0.85rem; color: var(--muted); text-align: left; font-style: italic; padding-left: 4px;">Pic 2: Golden Gate and Bay Tour flight planning</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -120,6 +184,34 @@
             <p>&copy; 2026 Ashish Fernandez | Updated June 2026</p>
         </footer>
     </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox-modal">
+        <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+        <img id="lightbox-img" class="lightbox-content" src="" alt="Zoomed view">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const zoomableImgs = document.querySelectorAll('.zoomable-img');
+
+            zoomableImgs.forEach(img => {
+                img.addEventListener('click', () => {
+                    lightboxImg.src = img.src;
+                    lightboxImg.alt = img.alt;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            lightbox.addEventListener('click', () => {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    </script>
 
     <script src="../../script.js?v=2"></script>
 </body>
